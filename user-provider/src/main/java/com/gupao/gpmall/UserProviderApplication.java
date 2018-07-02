@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableTransactionManagement//开启事务管理
 @MapperScan("com.gupao.gpmall.dal.mapper")
-@ImportResource({ "classpath:dubbo/*.xml" })
 public class UserProviderApplication {
 
 	public static void main(String[] args) {

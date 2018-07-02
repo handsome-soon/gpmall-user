@@ -4,18 +4,20 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql://127.0.0.1:3306/user?useUnicode=true&characterEncoding=UTF-8
+  dubbo:
+    application:
+      name: gmall-user
+    registry:
+      address: zookeeper://47.98.210.230:2181
+    protocol:
+       name: dubbo
+       port: 20880
+    scan: com.gupao.gpmall.provider
+
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
   type-aliases-package: com.gupao.gpmall.dal.entity
 
-dubbo:
-  registry:
-    address: 47.98.210.230:2181
-    protocol: zookeeper
-  application:
-    name: gmall-user
-  protocol:
-   name: zookeeper
-   port: 20880
+
 
 

@@ -28,6 +28,7 @@
 
     <modules>
         <module>user-api</module>
+        <module>user-dal</module>
         <module>user-provider</module>
     </modules>
 
