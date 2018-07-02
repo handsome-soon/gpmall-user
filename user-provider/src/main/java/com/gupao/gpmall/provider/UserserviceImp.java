@@ -1,13 +1,16 @@
 package com.gupao.gpmall.provider;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.fastjson.JSON;
 import com.gupao.gpmall.api.IUserService;
 import com.gupao.gpmall.api.dto.UserLoginRequest;
 import com.gupao.gpmall.api.dto.common.Result;
 import com.gupao.gpmall.dal.mapper.UserMapper;
 import com.gupao.gpmall.dal.entity.User;
+import com.gupao.gpmall.vo.UserVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -24,7 +27,7 @@ public class UserserviceImp implements IUserService {
 
     @Override
     public Result userLogin(UserLoginRequest request) {
-        logger.info("request -> "+  request);
+        logger.info("request -> "+ JSON.toJSONString(request));
         User user = null;
         try {
             user=userMapper.getUserByUserName(request.getUserName());
@@ -36,7 +39,8 @@ public class UserserviceImp implements IUserService {
             logger.error("login occur exception :"+e);
             return Result.error("系統異常");
         }
-
-        return  Result.success(user);
+        UserVo vo = new UserVo();
+        BeanUtils.copyProperties(user,vo);
+        return  Result.success(vo);
     }
 }
