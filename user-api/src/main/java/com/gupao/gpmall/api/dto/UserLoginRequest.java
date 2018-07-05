@@ -1,9 +1,13 @@
 package com.gupao.gpmall.api.dto;
 
+import java.io.Serializable;
+
 /**
  * Created by lixia on 2018/7/1.
  */
-public class UserLoginRequest {
+public class UserLoginRequest implements Serializable{
+
+    private static final long serialVersionUID = 8900447065402159842L;
 
     private  String userName;
 
